@@ -21,93 +21,127 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Register" />
+<GuestLayout>
+    <Head title="Registro" />
 
-        <form @submit.prevent="submit">
+    <div class="bg-[#020617] border border-slate-800 rounded-2xl p-8 shadow-2xl">
+
+        <!-- HEADER -->
+        <div class="mb-6 text-center">
+            <h1 class="text-xl font-semibold text-slate-200">
+                Crear cuenta
+            </h1>
+            <p class="text-sm text-slate-500 mt-1">
+                Registra tu acceso al sistema
+            </p>
+        </div>
+
+        <!-- FORM -->
+        <form @submit.prevent="submit" class="space-y-5">
+
+            <!-- NAME -->
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="name" value="Nombre" class="text-slate-400 text-xs" />
 
                 <TextInput
                     id="name"
                     type="text"
-                    class="mt-1 block w-full"
                     v-model="form.name"
                     required
                     autofocus
                     autocomplete="name"
+                    placeholder="Tu nombre"
+                    class="mt-1 block w-full bg-[#0b1120] border border-slate-700 text-white placeholder-slate-500 rounded-lg px-4 py-3
+                           focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
                 />
 
-                <InputError class="mt-2" :message="form.errors.name" />
+                <InputError class="mt-1 text-red-500 text-xs" :message="form.errors.name" />
             </div>
 
-            <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+            <!-- EMAIL -->
+            <div>
+                <InputLabel for="email" value="Correo electrónico" class="text-slate-400 text-xs" />
 
                 <TextInput
                     id="email"
                     type="email"
-                    class="mt-1 block w-full"
                     v-model="form.email"
                     required
                     autocomplete="username"
+                    placeholder="correo@ejemplo.com"
+                    class="mt-1 block w-full bg-[#0b1120] border border-slate-700 text-white placeholder-slate-500 rounded-lg px-4 py-3
+                           focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
                 />
 
-                <InputError class="mt-2" :message="form.errors.email" />
+                <InputError class="mt-1 text-red-500 text-xs" :message="form.errors.email" />
             </div>
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+            <!-- PASSWORD -->
+            <div>
+                <InputLabel for="password" value="Contraseña" class="text-slate-400 text-xs" />
 
                 <TextInput
                     id="password"
                     type="password"
-                    class="mt-1 block w-full"
                     v-model="form.password"
                     required
                     autocomplete="new-password"
+                    placeholder="••••••••"
+                    class="mt-1 block w-full bg-[#0b1120] border border-slate-700 text-white placeholder-slate-500 rounded-lg px-4 py-3
+                           focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
                 />
 
-                <InputError class="mt-2" :message="form.errors.password" />
+                <InputError class="mt-1 text-red-500 text-xs" :message="form.errors.password" />
             </div>
 
-            <div class="mt-4">
+            <!-- CONFIRM PASSWORD -->
+            <div>
                 <InputLabel
                     for="password_confirmation"
-                    value="Confirm Password"
+                    value="Confirmar contraseña"
+                    class="text-slate-400 text-xs"
                 />
 
                 <TextInput
                     id="password_confirmation"
                     type="password"
-                    class="mt-1 block w-full"
                     v-model="form.password_confirmation"
                     required
                     autocomplete="new-password"
+                    placeholder="••••••••"
+                    class="mt-1 block w-full bg-[#0b1120] border border-slate-700 text-white placeholder-slate-500 rounded-lg px-4 py-3
+                           focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
                 />
 
                 <InputError
-                    class="mt-2"
+                    class="mt-1 text-red-500 text-xs"
                     :message="form.errors.password_confirmation"
                 />
             </div>
 
-            <div class="mt-4 flex items-center justify-end">
+            <!-- FOOTER -->
+            <div class="flex items-center justify-between pt-4">
+
                 <Link
                     :href="route('login')"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    class="text-sm text-slate-400 hover:text-white transition"
                 >
-                    Already registered?
+                    ¿Ya tienes cuenta?
                 </Link>
 
                 <PrimaryButton
-                    class="ms-4"
+                    class="bg-blue-600 hover:bg-blue-500 px-6 py-2 rounded-lg shadow-lg shadow-blue-500/20 transition"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
-                    Register
+                    Crear cuenta
                 </PrimaryButton>
+
             </div>
+
         </form>
-    </GuestLayout>
+
+    </div>
+
+</GuestLayout>
 </template>
